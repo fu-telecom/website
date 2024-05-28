@@ -51,9 +51,11 @@
         </span>
         <span>
           <label for="desired-caller-id">Desired caller ID at the burn (must meet <a
-              href="https://en.wikipedia.org/wiki/Calling_Name_Presentation">CNAM standards</a>):
+              href="https://help.twilio.com/articles/360051670533-Getting-Started-with-CNAM-Caller-ID">CNAM
+              standards</a>):
           </label><br>
-          <input type="text" id="desired-caller-id" name="desired-caller-id" value="Epic Camp" required><br><br>
+          <input type="text" id="desired-caller-id" name="desired-caller-id" value="EPIC CAMP"
+            pattern="^[A-Z][A-Z0-9., ]+$" maxlength=15 required><br><br>
         </span>
         <p>Would you like to bring your own phone?</p>
         <span>
