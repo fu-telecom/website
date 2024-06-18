@@ -9,72 +9,80 @@
   </p>
   <form>
     <fieldset>
-      <legend>Your Contact Info</legend>
-      <span>
-        <label for="contact-name">Name (can be a burn name):</label><br>
-        <input type="text" id="contact-name" name="contact-name" value="Joe Schmoe" required><br><br>
-      </span>
-      <span>
-        <label for="contact-phone-number">Phone number:</label><br>
-        <input type="tel" id="contact-phone-number" name="contact-phone-number" value="999-999-9999"><br><br>
-      </span>
-      <span>
-        <label for="contact-email">Email address:</label><br>
-        <input type="email" id="contact-email" name="contact-email" value="hithere@gmail.com" required><br><br>
-      </span>
-    </fieldset>
-    <fieldset>
       <legend>Your Camp Lead's Contact Info</legend>
-      <span>
+      <div>
         <label for="lead-name">Name (can be a burn name):</label><br>
         <input type="text" id="lead-name" name="lead-name" value="Jane Doe"><br><br>
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="lead-phone-number">Phone number:</label><br>
         <input type="tel" id="lead-phone-number" name="lead-phone-number" value="111-111-1111"><br><br>
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="lead-phone-number">Email address:</label><br>
         <input type="email" id="lead-phone-number" name="lead-phone-number" value="byenow@gmail.com"><br><br>
-      </span>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Your Contact Info</legend>
+      <div>
+        <input type="checkbox" id="user-is-camp-lead" name="user-is-camp-lead" />
+        <label for="user-is-camp-lead">I am the camp lead; please desist in making me repeat myself</label>
+      </div>
+      <p>
+      <div id="your-contact-info-fields">
+        <div>
+          <label for="contact-name">Name (can be a burn name):</label><br>
+          <input type="text" id="contact-name" name="contact-name" value="Joe Schmoe" required><br><br>
+        </div>
+        <div>
+          <label for="contact-phone-number">Phone number:</label><br>
+          <input type="tel" id="contact-phone-number" name="contact-phone-number" value="999-999-9999"><br><br>
+        </div>
+        <div>
+          <label for="contact-email">Email address:</label><br>
+          <input type="email" id="contact-email" name="contact-email" value="hithere@gmail.com" required><br><br>
+        </div>
+      </div>
     </fieldset>
     <fieldset>
       <legend>Service Information</legend>
-      <span>
+      <div>
         <label for="camp-name">Your camp's name:</label><br>
-        <input type="text" id="camp-name" name="camp-name" value="Epic Camp" required><br><br>
-      </span>
-      <span>
+        <input type="text" id="camp-name" name="camp-name" value="Eat Shit Camp" required><br><br>
+      </div>
+      <div>
         <label for="desired-number">Desired phone number at the burn:</label><br>
         <input type="text" id="desired-number" name="desired-number" value="1-800-EAT-SHIT" required><br><br>
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="desired-caller-id">Desired caller ID at the burn (must meet <a
             href="https://help.twilio.com/articles/360051670533-Getting-Started-with-CNAM-Caller-ID">CNAM
             standards</a>; also, please make this really similar to your camp name):
         </label><br>
-        <input type="text" id="desired-caller-id" name="desired-caller-id" value="EPIC CAMP"
-          pattern="^[A-Z][A-Z0-9., ]+$" maxlength=15 required><br><br>
-      </span>
+        <input type="text" id="desired-caller-id" name="desired-caller-id" value="EAT SHIT CAMP"
+          pattern="^[A-Z][A-Z0-9., ]+$" maxlength=15 required><br>
+      </div>
       <p>Would you like to bring your own phone?</p>
-      <span>
+      <div>
         <input type="radio" id="user-provided" name="phone-to-use" value="user-provided" required checked>
         <label for="user-provided">No, I want FUT to provide me with a phone.</label><br>
-      </span>
-      <span>
+      </div>
+      <div>
         <input type="radio" id="fut-provided" name="phone-to-use" value="fut-provided" required>
         <label for="desired-phone-type">Yes, I have a phone I want to use. (WARNING: This is signficantly more
           complicated to set up, and not all phones are compatible with FUT. Please contact Dale before selecting this
           option.)</label><br><br>
-      </span>
-      <span>
+      </div>
+      <div>
         <label for="notes">Messages or comments you'd like to give us:</label><br>
         <input type="text" id="notes" name="notes"
           value="I'm very excited to pay my bill after I get this phone"><br><br>
-      </span>
+      </div>
     </fieldset>
     <input type="submit" value="Submit">
   </form>
+  <script src="sign-up.js"></script>
 </body>
 
 </html>
