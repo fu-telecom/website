@@ -4,7 +4,7 @@
 
 <body>
   <title>Sign Up Your Theme Camp</title>
-  <p>Want your theme camp to be provided with a phone at Flipside 2024? This is
+  <p>Want your theme camp to be provided with phone service at Flipside 2024? This is
     where you sign up.
   </p>
   <form>
@@ -51,7 +51,7 @@
       <span>
         <label for="desired-caller-id">Desired caller ID at the burn (must meet <a
             href="https://help.twilio.com/articles/360051670533-Getting-Started-with-CNAM-Caller-ID">CNAM
-            standards</a>):
+            standards</a>; also, please make this really similar to your camp name):
         </label><br>
         <input type="text" id="desired-caller-id" name="desired-caller-id" value="EPIC CAMP"
           pattern="^[A-Z][A-Z0-9., ]+$" maxlength=15 required><br><br>
@@ -59,11 +59,13 @@
       <p>Would you like to bring your own phone?</p>
       <span>
         <input type="radio" id="user-provided" name="phone-to-use" value="user-provided" required checked>
-        <label for="user-provided">No, I want you to provide me with a phone</label><br>
+        <label for="user-provided">No, I want FUT to provide me with a phone.</label><br>
       </span>
       <span>
         <input type="radio" id="fut-provided" name="phone-to-use" value="fut-provided" required>
-        <label for="desired-phone-type">Yes, I have a phone I want to use</label><br><br>
+        <label for="desired-phone-type">Yes, I have a phone I want to use. (WARNING: This is signficantly more
+          complicated to set up, and not all phones are compatible with FUT. Please contact Dale before selecting this
+          option.)</label><br><br>
       </span>
       <span>
         <label for="notes">Messages or comments you'd like to give us:</label><br>
