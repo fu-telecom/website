@@ -28,7 +28,7 @@
         </div>
         <div>
           <label for="lead-phone-number">Email address:</label><br>
-          <input type="email" id="lead-phone-number" name="lead-phone-number" value="byenow@gmail.com"><br><br>
+          <input type="email" id="lead-email" name="lead-email" value="byenow@gmail.com"><br><br>
         </div>
       </fieldset>
       <fieldset>
@@ -73,11 +73,11 @@
         </div>
         <p>Would you like to bring your own phone?</p>
         <div>
-          <input type="radio" id="user-provided" name="phone-to-use" value="user-provided" required checked>
-          <label for="user-provided">No, I want FUT to provide me with a phone.</label><br>
+          <input type="radio" id="fut-provided" name="phone-to-use" value="fut-provided" required checked>
+          <label for="fut-provided">No, I want FUT to provide me with a phone.</label><br>
         </div>
         <div>
-          <input type="radio" id="fut-provided" name="phone-to-use" value="fut-provided" required>
+          <input type="radio" id="user-provided" name="phone-to-use" value="user-provided" required>
           <label for="desired-phone-type">Yes, I have a phone I want to use. (WARNING: This is signficantly more
             complicated to set up, and not all phones are compatible with FUT. Please contact Dale before selecting this
             option.)</label><br><br>
@@ -88,7 +88,7 @@
           <br><br>
         </div>
       </fieldset>
-      <input type="submit" value="Submit" onClick="javascript:submitForm();">
+      <input type="submit" value="Submit" onclick="submitForm(event);">
     </form>
   </div>
   <script src="sign-up.js"></script>
