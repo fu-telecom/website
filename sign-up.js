@@ -1,6 +1,7 @@
 /** JavaScript for the signup page. */
-// TODO: change to actual URL once deployed to prod
-const apiBaseUrl = 'http://fut.localhost:8000';
+import { getConfig } from './config.js';
+
+const apiBaseUrl = getConfig().apiBaseUrl;
 
 // Stop the user from having to enter their info twice if they're the camp lead.
 const userIsCampLeadCheckBox = document.querySelector("#user-is-camp-lead");
@@ -151,7 +152,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('success_message').style.display = 'block';
     document.getElementById('signup_form').style.display = 'block';
     document.querySelector('.event_name').textContent = 'Debug Event';
+    document.getElementById('form_submit').addEventListener('click', () => alert('form submitted'));
   } else {
+    document.getElementById('form_submit').addEventListener('click', submitForm);
     const events = await getCurrentEvents();
     hideSuccess();
     if (events.length == 1) {
