@@ -140,15 +140,28 @@ function submitForm(event) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const events = await getCurrentEvents();
-  hideSuccess();
-  if (events.length == 1) {
-    // show form with event name
-    showForm(events[0].id, events[0].title);
-  } else if (events.length == 0) {
-    showNoEvents();
+  const urlParams = new URLSearchParams(window.location.search);
+  const hashValue = window.location.hash.substring(1); // Remove the '#' symbol
+  if (urlParams.has('debug') || hashValue.includes('debug')) {
+    document.getElementById('error').textContent = 'Sample error';
+    document.getElementById('error').style.display = 'block';
+    document.getElementById('no_events').style.display = 'block';
+    document.getElementById('event_selection').innerHTML = '<li value="debug">Debug Event</li>';
+    document.getElementById('event_selection').style.display = 'block';
+    document.getElementById('success_message').style.display = 'block';
+    document.getElementById('signup_form').style.display = 'block';
+    document.querySelector('.event_name').textContent = 'Debug Event';
   } else {
-    // multiple events - show "choose event"
-    showEventSelector(events);
+    const events = await getCurrentEvents();
+    hideSuccess();
+    if (events.length == 1) {
+      // show form with event name
+      showForm(events[0].id, events[0].title);
+    } else if (events.length == 0) {
+      showNoEvents();
+    } else {
+      // multiple events - show "choose event"
+      showEventSelector(events);
+    }
   }
 });

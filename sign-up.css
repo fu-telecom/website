@@ -1,0 +1,62 @@
+#error {
+  background-color: #ffcccc;
+  color: #cc0000;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #cc0000;
+  border-radius: 5px;
+  display: none; /* Initially hidden */
+}
+
+#no_events {
+  background-color: #ffffcc;
+  color: #666600;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #666600;
+  border-radius: 5px;
+}
+
+#multiple_events {
+  background-color: #ccffcc;
+  color: #006600;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #006600;
+  border-radius: 5px;
+}
+#event_selection ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+}
+
+#event_selection li {
+  padding: 8px;
+  margin-bottom: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#event_selection li:hover {
+  background-color: #ccffcc;
+}
+
+
+#success_message {
+  background-color: #cce5ff;
+  color: #005cbf;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #005cbf;
+  border-radius: 5px;
+  display: none; /* Initially hidden */
+}
+
+#signup_form {
+  background-color: #e6e6e6;
+  padding: 20px;
+  border-radius: 5px;
+}
