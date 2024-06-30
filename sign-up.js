@@ -27,7 +27,7 @@ function clearError() {
 }
 
 function setEventInfo(id, name) {
-  document.querySelector("#event_name").textContent = name;
+  document.querySelectorAll(".event_name").forEach(element => element.textContent = name);
   document.querySelector("#event_id").textContent = id;
 }
 
@@ -46,6 +46,16 @@ function showNoEvents() {
   hideForm();
   hideEventSelector();
   document.querySelector("#no_events").style.display = "block";
+}
+
+function showSuccess() {
+  clearError();
+  hideForm();
+  document.querySelector("#success_message").style.display = "block";
+}
+
+function hideSuccess() {
+  document.querySelector("#success_message").style.display = "none";
 }
 
 function hideNoEvents() {
@@ -120,16 +130,18 @@ function submitForm(event) {
   })
   .then(data => {
     console.log('Form submission successful', data);
-    alert('Form submitted successfully!');
+    clearError();
+    showSuccess();
   })
   .catch(error => {
     console.error('There has been a problem with your form submission:', error);
-    alert('Error submitting form');
+    showError('Error submitting form' + error);
   });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   const events = await getCurrentEvents();
+  hideSuccess();
   if (events.length == 1) {
     // show form with event name
     showForm(events[0].id, events[0].title);
