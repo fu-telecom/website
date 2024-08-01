@@ -1,10 +1,11 @@
 <html>
-
 <head>
+  <title>Sign Up Your Theme Camp</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
   <link rel="stylesheet" href="sign-up.css">
 </head>
 <body>
-  <title>Sign Up Your Theme Camp</title>
+  <div><a href="index.html">Back</a></div>
   <div id="error"></div>
   <div id="no_events">There are no events to sign up for at this time. Check back in, like, a million years, you loser.</div>
   <div id="multiple_events">
@@ -93,10 +94,15 @@
           <br><br>
         </div>
       </fieldset>
+      <div class="g-recaptcha" data-sitekey="6LdiyhwqAAAAAImNKWSZXXPjQu0F8rw_GWgBqGch"></div>
+      <div id="captcha_error">
+        BAD ROBOT! Only humans are allowed to register for FU Telecom services.
+      </div>
       <input type="submit" value="Submit" id="form_submit">
     </form>
   </div>
   <script type="module" src="sign-up.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>

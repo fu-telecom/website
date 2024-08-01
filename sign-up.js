@@ -59,6 +59,14 @@ function hideSuccess() {
   document.querySelector("#success_message").style.display = "none";
 }
 
+function showCaptchaError() {
+  document.querySelector("#captcha_error").style.display = "block";
+}
+
+function hideCaptchaError() {
+  document.querySelector("#captcha_error").style.display = "none";
+}
+
 function hideNoEvents() {
   document.querySelector("#no_events").style.display = "none";
 }
@@ -103,6 +111,13 @@ async function getCurrentEvents() {
 
 function submitForm(event) {
   event.preventDefault();
+  // check captcha
+  const response = grecaptcha.getResponse();
+  if (response.length === 0) {
+    showCaptchaError();
+    return;
+  }
+  hideCaptchaError();
   const event_id = document.querySelector("#event_id").textContent;
   const endpointPath = `${apiBaseUrl}/events/${event_id}/regs`;
   // TODO: basic validation on client-side - required values, etc. ?
@@ -118,6 +133,8 @@ function submitForm(event) {
   formData.append('desired_callerid', document.querySelector('#desired-caller-id').value);
   formData.append('own_phone', document.querySelector('input[name="phone-to-use"]:checked').value);
   formData.append('message', document.querySelector('#notes').value);
+  // Include the CAPTCHA response in the form data
+  formData.append('g-recaptcha-response', response);
   fetch(endpointPath, {
     method: 'POST',
     body: formData,
@@ -131,8 +148,12 @@ function submitForm(event) {
   })
   .then(data => {
     console.log('Form submission successful', data);
-    clearError();
-    showSuccess();
+    if (data.success) {
+      clearError();
+      showSuccess();
+    } else {
+      showError(data.message);
+    }
   })
   .catch(error => {
     console.error('There has been a problem with your form submission:', error);
@@ -152,6 +173,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('success_message').style.display = 'block';
     document.getElementById('signup_form').style.display = 'block';
     document.querySelector('.event_name').textContent = 'Debug Event';
+    document.getElementById('captcha_error').style.display = 'block';
     document.getElementById('form_submit').addEventListener('click', () => alert('form submitted'));
   } else {
     document.getElementById('form_submit').addEventListener('click', submitForm);
