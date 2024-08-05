@@ -20,6 +20,7 @@ userIsCampLeadCheckBox.addEventListener("change", () => {
 function showError(text) {
   document.querySelector("#error").textContent = "ERROR: " + text;
   document.querySelector("#error").style.display = "block";
+  document.getElementById('error').scrollIntoView();
 }
 
 function clearError() {
@@ -111,13 +112,6 @@ async function getCurrentEvents() {
 
 function submitForm(event) {
   event.preventDefault();
-  // check captcha
-  const response = grecaptcha.getResponse();
-  if (response.length === 0) {
-    showCaptchaError();
-    return;
-  }
-  hideCaptchaError();
   const event_id = document.querySelector("#event_id").textContent;
   const endpointPath = `${apiBaseUrl}/events/${event_id}/regs`;
   // TODO: basic validation on client-side - required values, etc. ?
@@ -133,21 +127,29 @@ function submitForm(event) {
   formData.append('desired_callerid', document.querySelector('#desired-caller-id').value);
   formData.append('own_phone', document.querySelector('input[name="phone-to-use"]:checked').value);
   formData.append('message', document.querySelector('#notes').value);
-  // Include the CAPTCHA response in the form data
-  formData.append('g-recaptcha-response', response);
+  // Check and include the CAPTCHA response in the form data
+  if (!doesURLinclude('nocaptcha')) {
+    const response = grecaptcha.getResponse();
+    if (response.length === 0) {
+      showCaptchaError();
+      return;
+    }
+    formData.append('g-recaptcha-response', response);
+  }
+  hideCaptchaError();
   fetch(endpointPath, {
     method: 'POST',
     body: formData,
   })
   // TODO: improve error handling
   .then(response => {
-    if (!response.ok) {
+    if (!response.ok && response.status !== 400) {
       throw new Error('Network response was not ok');
     }
     return response.json();
   })
   .then(data => {
-    console.log('Form submission successful', data);
+    console.log('API request successful', data);
     if (data.success) {
       clearError();
       showSuccess();
@@ -161,10 +163,14 @@ function submitForm(event) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+function doesURLinclude(str) {
   const urlParams = new URLSearchParams(window.location.search);
   const hashValue = window.location.hash.substring(1); // Remove the '#' symbol
-  if (urlParams.has('debug') || hashValue.includes('debug')) {
+  return urlParams.has(str) || hashValue.includes(str);
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  if (doesURLinclude('debug')) {
     document.getElementById('error').textContent = 'Sample error';
     document.getElementById('error').style.display = 'block';
     document.getElementById('no_events').style.display = 'block';
