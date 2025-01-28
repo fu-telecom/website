@@ -1,0 +1,56 @@
+body {
+  background-color: #d0d3ae;
+  font-family: 'Times New Roman', Times, serif; /* Classic font choice */
+  color: #000000; /* Basic black text */
+  margin: 20px;
+}
+
+nav, footer {
+  margin: 20px 0;
+  background-color: #dfb678; /* White background for nav and footer */
+  padding: 10px;
+}
+
+footer {
+  position: fixed; /* Make the footer stick to the bottom */
+  bottom: 0; /* Position the footer at the bottom of the page */
+  width: 100%; /* Ensure the footer extends full width */
+}
+
+a {
+  color: #0000ff; /* Basic blue links */
+}
+nav a, footer a {
+  text-decoration: none; /* No underlines */
+}
+
+nav a:hover, footer a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+nav a {
+  text-decoration: none; /* No underlines */
+  background-color: #e0ccaf; /* Add a background color for the button effect */
+  padding: 5px 10px; /* Add some padding around the text */
+  border-radius: 5px; /* Round the corners for a button-like appearance */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Add a drop-shadow for depth */
+}
+
+nav a:hover {
+  text-decoration: none; /* Keep underlines off on hover */
+  background-color: #f0f0f0; /* Lighten the background on hover */
+  box-shadow: 4px 4px 5px rgba(0,0,0,0.5); /* Enhance the drop-shadow on hover */
+}
+
+footer a {
+  padding: 5px;
+  border-right: 1px solid #000000; /* Add a border to the right of each link */
+}
+
+footer a:last-child {
+  border-right: none; /* Remove the border from the last link */
+}
+
+img {
+  border: 2px solid #000000; /* Black border around images */
+}

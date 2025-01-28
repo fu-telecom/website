@@ -107,6 +107,8 @@ async function getCurrentEvents() {
   .catch(error => {
     console.error('There has been a problem with your fetch operation:', error);
     showError('Error retrieving events');
+    hideNoEvents();
+    hideEventSelector();
   });
 }
 
